@@ -25,7 +25,33 @@ var displayPrice = document.getElementById('price');
 
 var couponCode = document.getElementById('coupon');
 
+/* variabile per span accanto al checkbox*/
+
+var addBtn = document.getElementsByClassName('ingredient-add');
+
+
+// Settings
+
 var codici = ['123456', 'abcdef', 'sconto'];
+
+
+
+// 4 Rendere span dopo checkbox cliccabili
+
+for (var i = 0; i < addBtn.length; i++) {
+    var add = addBtn[i];
+    add.addEventListener('click', function(){
+        console.log('Click ok'); /*Verifico se tutti span cliccabili*/
+
+        console.log(this);
+        console.log(this.previousElementSibling);
+
+        var thisCheckbox = this.previousElementSibling;
+
+        thisCheckbox.checked = ! thisCheckbox.checked;
+
+    })
+}
 
 
 
@@ -72,7 +98,7 @@ btn.addEventListener('click',
             
             if (codici.includes(couponCode)){
                 console.log("Codice corretto, applicare sconto")
-                
+
                 // Applicare sconto 20%
                 price -= price * 0.2;
             } else {
